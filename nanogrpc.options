@@ -1,5 +1,4 @@
 GrpcRequest.data type:FT_POINTER
-GrpcRequest.path type:FT_POINTER
-
-GrpcRequest_CS.path type:FT_POINTER
+GrpcRequest.path max_size:0
+GrpcRequest_CS.path max_size:0
 GrpcResponse_CS.data type:FT_POINTER

@@ -203,6 +203,7 @@ bool ng_GrpcParseBlocking(ng_grpc_handle_t *handle){
             false)){ /* callback and context found */
         ctx = method->context;
         ctx->method = method;
+        ctx->call_id = handle->request.call_id;
         method->request_fillWithZeros(ctx->request);
         if (pb_decode(&input, method->request_fields, ctx->request)){
           method->response_fillWithZeros(ctx->response);
@@ -247,6 +248,7 @@ bool ng_GrpcParseBlocking(ng_grpc_handle_t *handle){
     /* return fasle // TODO ? */
     handle->response.call_id = 0;
     handle->response.grpc_status = GrpcStatus_DATA_LOSS;
+    ret = false;
   }
   if (!pb_encode(handle->output, GrpcResponse_fields, &handle->response)){
     /* TODO unable to encode */

@@ -4,7 +4,7 @@ syntax = "proto2";
 // import 'nanopb.proto';
 
 message GrpcRequest {
-  required int32 call_id = 1;
+  required fixed32 call_id = 1;
   // This would be ideal to have oneof here,
   // but since callback inside oneof is not supported
   // I am leaving strign path as optional
@@ -12,7 +12,7 @@ message GrpcRequest {
   //   int32 path_crc = 1;
   //   string path = 2 [(nanopb).max_size = 8];
   // }
-  required int32 path_hash = 2;
+  required fixed32 path_hash = 2;
   optional string path = 3;
   required bytes data = 10;
 }
